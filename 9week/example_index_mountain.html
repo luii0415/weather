@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+
+        <img class="mountain"  src="mountain.png">
+
+        <title>대한민국 7대 명산</title>
+
+<!--        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98068d23a92f8a37ce0e169b0b5adb31"></script>-->
+
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f907ba84f6913f61c20f0b9cf3f37ffe"></script>
+
+        <style>
+
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;400;600&display=swap');
+
+          body {
+            background-color: #36583e
+          }
+
+          .top {
+            width: 300px;
+            margin: 0 auto 0 auto;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .mountain {
+            width: 200px;
+            height: 115px;
+            margin: 5% 43% -5%;
+          }
+
+          .logo {
+            width: 90px;
+            height: 60px;
+            background-image: url('owl.jpg');
+            background-position: center;
+            background-size: contain;
+            margin-top: 10px;
+          }
+
+          .main {
+            color: white;
+          }
+
+          .bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 70px;
+          }
+
+          .button {
+            padding: 10px 70px 10px 70px;
+            border-radius: 20px;
+            border: none;
+            margin: 0 0 30px 0;
+            background-color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+          }
+
+          .location_name {
+            color: white;
+            margin: 10px 0px 10px 0px;
+            font-size: 16px;
+          }
+
+          .map_name {
+            font-weight: bold;
+            margin: 0 auto;
+            width: 50px;
+            padding:10px;
+          }
+
+        </style>
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+<!--        <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>-->
+        <script>
+            $(document).ready(function () {
+                getMountain();
+            });
+
+            function getMountain() {
+            $.ajax({
+                type: "GET",
+                url: "/mnt",
+                data: {},
+                success: function (response) {
+                    let rows = response['mnt_lla']
+                    for (i=0 ; i<rows.length ; i++) {
+                        let mnt_name = rows[i]['산 이름']
+                        let mnt_lat = rows[i]['위도']
+                        let mnt_long = rows[i]['경도']
+                        console.log(mnt_name,mnt_lat, mnt_long)
+                        }
+                    }
+                });
+            }
+
+
+        </script>
+
+    </head>
+    <body>
+<!--      <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>-->
+
+          <div class="top">
+              <!-- <a href="https://spartacodingclub.kr/"> -->
+              <!-- <img class='sparta' src="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/free/logo_teamsparta.png" target = "_blank" width="100px"/> -->
+              <!-- </a>   -->
+              <div class="logo"></div>
+              <h1 class="main">대한민국 7대 명산</h1>
+          </div>
+          <!-- 지도 표시 영역 -->
+          <div id="map" style="width:800px;height:600px; border-radius: 20px; margin: 50px auto 0 auto;"></div>
+          <!-- 산 내용 표시 영역 -->
+          <div id = "showContents" style="text-align: center; word-wrap: break-word; padding: 5px 0 50px 0; font-size: 20px; display: none; width:800px; border-radius: 20px; margin: 50px auto 0 auto; background-color: white;">
+            <!--산 이름 -->
+            <p id ="mName" style="margin-top: 50px" ></p>
+            <!-- 산 내용 -->
+            <p id ="mContents" style="padding:10px;"></p>
+            <!-- 닫기 버튼  -->
+            <button id="closeBtn" style="right:0px; font-size: 20px; float: right; margin-right: 50px; border-radius: 5px;">x</button>
+          </div>
+          <script>
+
+
+              var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                  mapOption = {
+                      center: new kakao.maps.LatLng(36.033705, 128.020205), // 지도의 중심좌표
+                      draggable: false, // 지도를 생성할때 지도 이동 및 확대/축소를 막기 = 정적지도
+                      level: 13 // 지도의 확대 레벨
+                  };
+              var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+              var positions = [
+                  {
+                      content: '<div id="map_Aname">무등산</div>',
+                      latlng: new kakao.maps.LatLng(35.081959, 126.995819)
+                  },
+                  {
+                      content: '<div id="map_Bname">북한산</div>',
+                      latlng: new kakao.maps.LatLng(37.628189, 126.959518)
+                  },
+                  {
+                      content: '<div id="map_Cname">설악산</div>',
+                      latlng: new kakao.maps.LatLng(38.136951, 128.347443)
+                  },
+                  {
+                      content: '<div id="map_Dname">소백산</div>',
+                      latlng: new kakao.maps.LatLng(36.957512, 128.484955)
+                  },
+                  {
+                      content: '<div id="map_Ename">속리산</div>',
+                      latlng: new kakao.maps.LatLng(36.570675, 127.824394)
+                  },
+                  {
+                      content: '<div id="map_Ename">지리산</div>',
+                      latlng: new kakao.maps.LatLng(35.336895, 127.730614)
+                  },
+                  {
+                      content: '<div id="map_Ename">한라산</div>',
+                      latlng: new kakao.maps.LatLng(33.361015, 126.535667)
+                  },
+
+
+              ];
+
+              // 여기에서 위도, 경도 바꿔줌. 아니면 함수 호출
+
+              // 위,경도 지정해주는 함수
+              function getLatLng (){
+
+                var latitude = 35; // 위도
+                var longitude = 126; // 경도
+
+                //get으로 받아온 위도, 경도 값을 위 변수에 담아주기
+
+                // 첫번째 산 위도 경도 바꿔줌
+                positions[0].latlng = new kakao.maps.LatLng(latitude, longitude);
+                console.log(Object.values(positions[0].latlng)); // ()괄호안의 값은 첫번째 산의 위,경도 나타냄.
+
+              }
+              getLatLng();
+
+              // 닫기 버튼 함수
+              $('#closeBtn').click(function () {
+                  $('#showContents').css("display", "none");
+              });
+
+              $(document).ready(function () {
+                  show_bucket();
+                  // A산 지정
+                  $('#map_Aname').click(function(){
+                    $('#mName').text("한라산");
+                    $('#mContents').text("한라산입니다.");
+                    $('#showContents').css("display", "block");
+                  });
+                  // B산 지정
+                  $('#map_Bname').click(function(){
+                    $('#mName').text("북한산");
+                    $('#mContents').text("북한산입니다.");
+                    $('#showContents').css("display", "block");
+                  });
+                  // C산 지정
+                  $('#map_Cname').click(function(){
+                    $('#mName').text("설악산");
+                    $('#mContents').text("설악산입니다.");
+                    $('#showContents').css("display", "block");
+                  });
+                  // D산 지정
+                  $('#map_Dname').click(function(){
+                    $('#mName').text("무등산");
+                    $('#mContents').text("무등산입니다.");
+                    $('#showContents').css("display", "block");
+                  });
+              });
+
+              for (var i = 0; i < positions.length; i ++) {
+                  // 마커를 생성합니다
+                  var marker = new kakao.maps.Marker({
+                      map: map, // 마커를 표시할 지도
+                      position: positions[i].latlng // 마커의 위치
+                  });
+
+                  // 마커에 표시할 인포윈도우를 생성합니다
+                  var infowindow = new kakao.maps.InfoWindow({
+                      content: positions[i].content // 인포윈도우에 표시할 내용
+                  });
+                  infowindow.open(map, marker);
+
+              }
+              console.log(Object.values(positions[0].latlng)); // ()괄호안의 값은 첫번째 산의 위,경도 나타냄.
+              show_msg()
+              // alert('안되는데용')
+
+
+          </script>
+
+          <div class="bottom" >
+              <details>
+                <summary class="button">미세먼지 정보</summary>
+                <p class="location_name">서울/경기</p>
+                <p class="location_name">강원도</p>
+                <p class="location_name">경상도</p>
+                <p class="location_name">전라도</p>
+                <p class="location_name">충청도</p>
+                <p class="location_name">제주도</p>
+              </details>
+          </div>
+    </body>
+</html>
+
+
