@@ -1,3 +1,2 @@
 # weather
-openSW project
-project made with react
+openSW project (project made with react)
