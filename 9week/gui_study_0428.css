@@ -8,43 +8,87 @@
 }
 .red {
   background-color: rgb(235, 82, 82);
+  transition: background-color 0.1s;
+}
+.red:hover {
+  background-color: rgb(121, 8, 8);
 }
 .pink {
   background-color: rgb(247, 135, 235);
+  transition: background-color 0.1s;
 }
-
+.pink:hover {
+  background-color: darkmagenta;
+}
 .green {
   background-color: rgb(31, 207, 113);
+  transition: background-color 0.1s;
+}
+.green:hover {
+  background-color: darkolivegreen;
 }
 .lightgreen {
   background-color: rgb(163, 233, 89);
+  transition: background-color 0.1s;
 }
-.red {
-  background-color: rgb(235, 82, 82);
+.lightgreen:hover {
+  background-color: darkgreen;
 }
 .yellow {
   background-color: rgb(238, 255, 0);
+  transition: background-color 0.1s;
+}
+.yellow:hover {
+  background-color: darkgoldenrod;
 }
 .darkyellow {
   background-color: rgb(185, 177, 83);
+  transition: background-color 0.1s;
+}
+.darkyellow:hover {
+  background-color: goldenrod;
 }
 .blue {
-  background-color: rgb(0, 123, 255);
+  background-color: dodgerblue;
+  transition: background-color 0.1s;
 }
-.darkblue {
-  background-color: rgba(0, 47, 255, 0.504);
+.blue:hover {
+  background-color: darkblue;
+}
+.lightblue {
+  background-color: aqua;
+  transition: background-color 0.1s;
+}
+.lightblue:hover {
+  background-color: cadetblue;
 }
 .orange {
   background-color: rgb(255, 170, 0);
+  transition: background-color 0.1s;
+}
+.orange:hover {
+  background-color: darkgoldenrod;
 }
 .darkorange {
   background-color: rgb(129, 81, 8);
+  transition: background-color 0.1s;
+}
+.darkorange:hover {
+  background-color: darkorange;
 }
 .purple {
   background-color: rgb(183, 0, 255);
+  transition: background-color 0.1s;
+}
+.purple:hover {
+  background-color: blueviolet;
 }
 .lightpurple {
   background-color: rgb(204, 121, 243);
+  transition: background-color 0.1s;
+}
+.lightpurple:hover {
+  background-color: hotpink;
 }
 .slot1 {
   display: block;
