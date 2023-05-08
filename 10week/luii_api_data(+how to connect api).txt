@@ -1,0 +1,18 @@
+사용 가능 api 목록 (날씨)
+
+1. 기상청_지상(종관, ASOS) 시간자료 조회서비스(json)
+https://www.data.go.kr/data/15057210/openapi.do#tab_layer_detail_function
+2. 기상청_지상(종관, ASOS) 일자료 조회서비스(json)
+https://www.data.go.kr/data/15059093/openapi.do
+3. 기상청 단기예보 (파일)
+https://www.data.go.kr/data/15043494/fileData.do?recommendDataYn=Y
+4. 공공기관 기상관측 자료 (파일)
+https://www.data.go.kr/data/15043644/fileData.do?recommendDataYn=Y
+5. 기상청_초단기예보 (파일)
+https://www.data.go.kr/data/15043492/fileData.do?recommendDataYn=Y
+6. 기상청_단기예보 ((구)_동네예보) 조회서비스(json)
+https://www.data.go.kr/data/15084084/openapi.do?recommendDataYn=Y
+
+++ react 기초 설명 ++
+- 4. api 연동하기
+https://react.vlpt.us/integrate-api/01-basic.html
