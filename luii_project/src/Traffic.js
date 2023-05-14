@@ -13,3 +13,4 @@ function Traffic({ exDivCode, tcsType, carType, sumDate, trafficVolumn }) {
   );
 }
 export default Traffic;
+//페이지에 출력될 양식대로 작성하기
