@@ -1,0 +1,27 @@
+import React, { useEffect } from 'react';
+
+function SampleComponent() {
+  useEffect(() => {
+    const url = 'http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst';
+    const queryParams = '?' + encodeURIComponent('serviceKey') + '='+'서비스키'; /*Service Key*/
+    queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /**/
+    queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('1000'); /**/
+    queryParams += '&' + encodeURIComponent('dataType') + '=' + encodeURIComponent('XML'); /**/
+    queryParams += '&' + encodeURIComponent('base_date') + '=' + encodeURIComponent('20210628'); /**/
+    queryParams += '&' + encodeURIComponent('base_time') + '=' + encodeURIComponent('0600'); /**/
+    queryParams += '&' + encodeURIComponent('nx') + '=' + encodeURIComponent('55'); /**/
+    queryParams += '&' + encodeURIComponent('ny') + '=' + encodeURIComponent('127'); /**/
+
+    fetch(url + queryParams)
+      .then(response => response.text())
+      .then(data => console.log(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>Sample Component</h1>
+    </div>
+  );
+}
+
+초단기 실황 예보 예시 코드 작성
