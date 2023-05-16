@@ -1,56 +1,48 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Traffic from "./Traffic";
+import React, { useEffect } from "react";
 
 function App() {
-  const [state, setState] = useState({
-    isLoading: true,
-    data: [],
-  });
-
-  function getTraffic() {
-    const url = `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst`;
-    console.log(url);
-    axios.get(url).then((Response) => {
-      const data = Response.data.list;
-      console.log(data);
-
-      setState({
-        isLoading: false,
-        data: data,
-      });
-    });
-  }
-
   useEffect(() => {
-    getTraffic();
+    const fetchData = async () => {
+      const url =
+        "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"; /*URL*/
+      const serviceKey =
+        "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
+      const baseDate = "20230515";
+      const baseTime = "0500";
+      const nx = "55";
+      const ny = "127";
+
+      const queryParams =
+        `?serviceKey=${encodeURIComponent(serviceKey)}` +
+        `&pageNo=${encodeURIComponent("1")}` +
+        `&numOfRows=${encodeURIComponent("5")}` +
+        `&dataType=${encodeURIComponent("JSON")}` +
+        `&base_date=${encodeURIComponent(baseDate)}` +
+        `&base_time=${encodeURIComponent(baseTime)}` +
+        `&nx=${encodeURIComponent(nx)}` +
+        `&ny=${encodeURIComponent(ny)}`;
+
+      try {
+        const response = await fetch(url + queryParams);
+        if (response.ok) {
+          const data = await response.text();
+
+          console.log(data); //출력
+        } else {
+          console.error("API 호출 실패");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const { isLoading, data } = state;
-
   return (
-    <section className="container">
-      {isLoading ? (
-        <div className="loader">
-          <span className="loader_text">Loading...</span>
-        </div>
-      ) : (
-        <div className="trafficInfo">
-          {data.map((d, cnt) => {
-            return (
-              <Traffic
-                key={cnt}
-                sumDate={data[cnt].sumDate}
-                exDivCode={data[cnt].exDivCode}
-                tcsType={data[cnt].tcsType}
-                carType={data[cnt].carType}
-                trafficVolumn={data[cnt].trafficVolumn}
-              />
-            );
-          })}
-        </div>
-      )}
-    </section>
+    <div className="App">
+      <h1>Hello, React!</h1>
+    </div>
   );
 }
 
