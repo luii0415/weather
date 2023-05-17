@@ -44,8 +44,12 @@ function App() {
   // 단위에 맞추어서 출력되도록 작성 필요.
   return (
     <div className="App">
-      <h1>Hello, React!</h1>
-    </div>
+      <li>결과 1</li>
+      <li>결과 2</li>
+      <li>결과 3</li>
+      <li>결과 4</li>
+      <li>결과 5</li>
+    </div>>
   );
 }
 
