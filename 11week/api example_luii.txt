@@ -1,0 +1,21 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [data, setData] = useState(null);
+
+  // API 호출 후 데이터를 가져오는 함수
+  const fetchData = async () => {
+    const response = await fetch('<URL>');
+    const json = await response.json();
+    setData(json);
+  }
+
+  return (
+    <div>
+      <button onClick={fetchData}>데이터 가져오기</button>
+      {data && <div>{JSON.stringify(data)}</div>}
+    </div>
+  );
+}
+
+export default App;
