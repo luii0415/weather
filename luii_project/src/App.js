@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 
 function App() {
+  const current = new Date();
+  const date = `${current.getFullYear()}0${
+    current.getMonth() + 1
+  }${current.getDate()}`;
+  const [data, setData] = React.useState(null);
   useEffect(() => {
     const fetchData = async () => {
       const url =
         "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"; /*URL*/
       const serviceKey =
         "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
-      const baseDate = "20230515";
+      const baseDate = date; //오늘 날짜
       const baseTime = "0500";
       const nx = "55";
       const ny = "127";
@@ -26,7 +31,7 @@ function App() {
         const response = await fetch(url + queryParams);
         if (response.ok) {
           const data = await response.text();
-
+          setData(data);
           console.log(data); //출력
         } else {
           console.error("API 호출 실패");
@@ -39,17 +44,17 @@ function App() {
     fetchData();
   }, []);
   // 이후 return 부분에 날짜, 시간, 날씨 정보 출력되도록 작성해야 함.
-  // 날짜는 오늘 날짜를 불러올 수 있는 확장프로그램? 헤더파일로 가져와야 할 것 같다.
   // 그리고, 출력될때, 데이터의 이름과 값은 따로 조건문 등으로 출력 될때 한글로 출력되고,
   // 단위에 맞추어서 출력되도록 작성 필요.
   return (
-    <div className="App">
-      <li>결과 1</li>
-      <li>결과 2</li>
-      <li>결과 3</li>
-      <li>결과 4</li>
-      <li>결과 5</li>
-    </div>>
+    <div>
+      <li>
+        기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
+        {current.getDate()}일
+      </li>
+      <li>기준 시간 : 오전 6시</li>
+      <li>{data}</li>
+    </div>
   );
 }
 
