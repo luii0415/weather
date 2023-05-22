@@ -1,0 +1,21 @@
+javascript
+<ul>
+  {data.response.body.items.item.map((item, index) => (
+    <li key={index}>
+      카테고리:{" "}
+      {(() => {
+        switch (item.category) {
+          case "TMP":
+            return "온도";
+          case "ANOTHER_CATEGORY":
+            return "다른 카테고리";
+          // 추가하고 싶은 경우 여기에 추가
+          default:
+            return item.category;
+        }
+      })()}
+      , 값: {item.fcstValue}
+    </li>
+  ))}
+</ul>
+```
