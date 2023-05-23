@@ -21,7 +21,7 @@ function App() {
       const queryParams =
         `?serviceKey=${encodeURIComponent(serviceKey)}` +
         `&pageNo=${encodeURIComponent("1")}` +
-        `&numOfRows=${encodeURIComponent("5")}` +
+        `&numOfRows=${encodeURIComponent("10")}` +
         `&dataType=${encodeURIComponent("JSON")}` +
         `&base_date=${encodeURIComponent(baseDate)}` +
         `&base_time=${encodeURIComponent(baseTime)}` +
@@ -56,12 +56,64 @@ function App() {
         <div>
           <h3>데이터:</h3>
           <ul>
-            {data.response.body.items.item.map((item, index) => (
-              <li key={index}>
-                카테고리: {item.category === "TMP" ? "온도" : item.category},{" "}
-                값: {item.fcstValue}
-              </li>
-            ))}
+            {data.response.body.items.item.map((item, index) => {
+              if (item.category !== "WAV" && item.category !== "WSD") {
+                return (
+                  <li key={index}>
+                    카테고리:{" "}
+                    {(() => {
+                      switch (item.category) {
+                        case "TMP":
+                          return "온도";
+                        case "UUU":
+                          return "풍속";
+                        case "POP":
+                          return "강수확률";
+                        case "PCP":
+                          return "1시간 강수량";
+                        case "REH":
+                          return "습도";
+                        case "SKY":
+                          return "하늘상태";
+                        default:
+                          return item.category;
+                      }
+                    })()}
+                    , 값:{" "}
+                    {(() => {
+                      if (item.category === "SKY") {
+                        switch (item.fcstValue) {
+                          case "1":
+                            return "맑음";
+                          case "3":
+                            return "구름많음";
+                          case "4":
+                            return "흐림";
+                          default:
+                            return item.fcstValue;
+                        }
+                      } else {
+                        return item.fcstValue;
+                      }
+                    })()}
+                    {(() => {
+                      if (!isNaN(item.fcstValue)) {
+                        switch (item.category) {
+                          case "TMP":
+                            return "℃";
+                          case "PCP":
+                            return "mm";
+                          default:
+                            return "";
+                        }
+                      } else {
+                        return "";
+                      }
+                    })()}
+                  </li>
+                );
+              }
+            })}
           </ul>
         </div>
       )}
