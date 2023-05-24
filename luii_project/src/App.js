@@ -21,7 +21,7 @@ function App() {
       const queryParams =
         `?serviceKey=${encodeURIComponent(serviceKey)}` +
         `&pageNo=${encodeURIComponent("1")}` +
-        `&numOfRows=${encodeURIComponent("10")}` +
+        `&numOfRows=${encodeURIComponent("11")}` +
         `&dataType=${encodeURIComponent("JSON")}` +
         `&base_date=${encodeURIComponent(baseDate)}` +
         `&base_time=${encodeURIComponent(baseTime)}` +
@@ -57,10 +57,15 @@ function App() {
           <h3>데이터:</h3>
           <ul>
             {data.response.body.items.item.map((item, index) => {
-              if (item.category !== "WAV" && item.category !== "WSD") {
+              if (
+                item.category !== "WAV" &&
+                item.category !== "WSD" &&
+                item.category !== "VVV" &&
+                item.category !== "VEC"
+              ) {
                 return (
                   <li key={index}>
-                    카테고리:{" "}
+                    카테고리 :{" "}
                     {(() => {
                       switch (item.category) {
                         case "TMP":
@@ -75,6 +80,8 @@ function App() {
                           return "습도";
                         case "SKY":
                           return "하늘상태";
+                        case "PTY":
+                          return "강수형태";
                         default:
                           return item.category;
                       }
@@ -103,6 +110,10 @@ function App() {
                             return "℃";
                           case "PCP":
                             return "mm";
+                          case "POP":
+                            return "%";
+                          case "REH":
+                            return "%";
                           default:
                             return "";
                         }
