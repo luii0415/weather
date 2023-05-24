@@ -4,21 +4,6 @@ import React, {useEffect} from "react";
 const {kakao} = window;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src='img/CodeBreakers_logo.png'/>
-        <p>날씨 정보 제공 웹사이트</p>
-        <p>
-          여기에 지도가 들어갑니다.
-        </p>
-      </header>
-    </div>
-  );
-}
-
-
-function Kakao(){
 
   useEffect(() => {
     const staticMapContainer  = document.getElementById('staticMap'); //지도를 담을 영역의 DOM 레퍼런스
@@ -27,15 +12,31 @@ function Kakao(){
       level: 14 //지도의 레벨(확대, 축소 정도)
     };
     const staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption); //지도 생성 및 객체 리턴
-  }, [])
-  
-  return (
-    <div id='staticMap' style={{
-      width : '300px',
-      height : '450px'
-    }}></div>
-  )
+    kakao.maps.event.addListener(staticMap, 'click', function(mouseEvent) {        
+    
+      // 클릭한 위도, 경도 정보를 가져옵니다 
+      var latlng = mouseEvent.latLng; 
+      var message = '클릭한 위치의 위도는 ' + latlng.getLat() + ' 이고, ';
+      message += '경도는 ' + latlng.getLng() + ' 입니다';
+      
+      var resultDiv = document.getElementById('clickLatlng'); 
+      console.log(resultDiv, message);
+    });
 
+  }, [])
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src='img/CodeBreakers_logo.png'/>
+        <p>날씨 정보 제공 웹사이트</p>
+        <div id='staticMap' style={{
+          width : '400px',
+          height : '450px'
+        }}></div>
+      </header>
+    </div>
+  );
 }
 
-export {App, Kakao};
+export {App};
