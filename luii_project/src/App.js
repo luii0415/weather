@@ -57,10 +57,19 @@ function App() {
           <h3>데이터:</h3>
           <ul>
             {data.response.body.items.item.map((item, index) => {
+              const popValue = data.response.body.items.item.find(
+                (i) => i.category === "POP"
+              )?.fcstValue;
+              if (
+                (item.category === "PTY" || item.category === "PCP") &&
+                popValue === "0"
+              ) {
+                return null;
+              }
               if (
                 item.category !== "WAV" &&
-                item.category !== "WSD" &&
                 item.category !== "VVV" &&
+                item.category !== "UUU" &&
                 item.category !== "VEC"
               ) {
                 return (
@@ -70,7 +79,7 @@ function App() {
                       switch (item.category) {
                         case "TMP":
                           return "온도";
-                        case "UUU":
+                        case "WSD":
                           return "풍속";
                         case "POP":
                           return "강수확률";
@@ -99,6 +108,19 @@ function App() {
                           default:
                             return item.fcstValue;
                         }
+                      } else if (item.category === "PTY") {
+                        switch (item.fcstValue) {
+                          case "0":
+                            return "맑음";
+                          case "1":
+                            return "비";
+                          case "2":
+                            return "비 나 눈";
+                          case "3":
+                            return "소나기";
+                          default:
+                            return item.fcstValue;
+                        }
                       } else {
                         return item.fcstValue;
                       }
@@ -114,6 +136,8 @@ function App() {
                             return "%";
                           case "REH":
                             return "%";
+                          case "WSD":
+                            return "m/s";
                           default:
                             return "";
                         }
