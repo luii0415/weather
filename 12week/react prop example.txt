@@ -1,0 +1,46 @@
+-- React App.js
+import React, { useState } from 'react';
+import WeatherInformation from './weather_information';
+import Map from './map';
+
+function App() {
+  const [values, setValues] = useState({ value1: 0, value2: 0 });
+
+  return (
+    <div>
+      <WeatherInformation values={values} />
+      <Map setValues={setValues} />
+    </div>
+  );
+}
+
+
+Weather_information.js
+function WeatherInformation(props) {
+  return (
+    <div>
+      Value 1: {props.values.value1}
+      Value 2: {props.values.value2}
+    </div>
+  );
+}
+
+Map.js 
+function Map(props) {
+  const handleClick = () => {
+    props.setValues({ value1: 30, value2: 15 });
+  };
+
+  return (
+    <div>
+      <button onClick={handleClick}>Update Values</button>
+    </div>
+  );
+}
+
+
+ WeatherInformation 컴포넌트에서 부모 컴포넌트인 App에서 전달된 values (props)에 접근하여 값을 표시
+Map 컴포넌트에서는 부모 컴포넌트인 App에서 전달된 setValues 함수를 호출하여 value 값을 업데이트
+
+Map컴포넌트에서 버튼을 클릭하면 값이 업데이트되고, 
+이 값이 `WeatherInformation` 컴포넌트에 반영
