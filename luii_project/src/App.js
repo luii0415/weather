@@ -15,8 +15,8 @@ function App() {
         "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
       const baseDate = date;
       const baseTime = "0500";
-      const nx = "55";
-      const ny = "127";
+      const nx = "64";
+      const ny = "122";
 
       const queryParams =
         `?serviceKey=${encodeURIComponent(serviceKey)}` +
@@ -52,6 +52,7 @@ function App() {
         {current.getDate()}일
       </li>
       <li>기준 시간 : 오전 6시</li>
+      <li>기준 지역(기본 지역) : 모현읍</li>
       {data && data.response && data.response.body && (
         <div>
           <h3>데이터:</h3>
