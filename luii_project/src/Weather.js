@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function App() {
+function Weather() {
   const current = new Date();
   const date = `${current.getFullYear()}0${
     current.getMonth() + 1
@@ -157,4 +157,4 @@ function App() {
   );
 }
 
-export default App;
+export default Weather;

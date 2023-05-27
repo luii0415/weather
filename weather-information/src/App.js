@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+import Weather from "./Weather";
 function App() {
+  const [values, setValues] = useState({ value1: 0, value2: 0 });
   return (
     <div className="App">
       <div className="top"> top section</div>
-      <div className="middle"> middle section</div>
+      <div className="middle">
+        {" "}
+        middle section
+        <Weather values={values} />
+      </div>
       <div className="bottom">bottom section</div>
     </div>
   );
