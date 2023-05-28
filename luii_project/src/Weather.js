@@ -52,7 +52,7 @@ function Weather() {
         {current.getDate()}일
       </li>
       <li>기준 시간 : 오전 6시</li>
-      <li>기준 지역(기본 지역) : 모현읍</li>
+      <li>기준 지역(기본 지역) : 용인시 처인구 모현읍</li>
       {data && data.response && data.response.body && (
         <div>
           <h3>데이터:</h3>

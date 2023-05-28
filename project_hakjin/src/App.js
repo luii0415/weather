@@ -13,52 +13,69 @@ function App() {
       level: 14 // 지도의 레벨(확대, 축소 정도)
     };
     const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성 및 객체 리턴
+    const handleMarkerClick = (position) => {
+      const { coordinate } = position;
+      console.log('Clicked Coordinate:', coordinate);
+      // 여기서 필요한 로직을 구현하면 됩니다.
+      // 마커를 클릭했을 때 실행될 동작을 정의할 수 있습니다.
+    };
 
     // 마커를 표시할 위치와 title 객체 배열입니다 
     var positions = [
       {
         title: '서울',
-        latlng: new kakao.maps.LatLng(37.56704941461455, 126.97844845091791)
+        latlng: new kakao.maps.LatLng(37.56704941461455, 126.97844845091791),
+        coordinate: {x:60, y:127}
       },
       {
         title: '경기도',
-        latlng: new kakao.maps.LatLng(37.395856954696164, 127.4529954533116)
+        latlng: new kakao.maps.LatLng(37.395856954696164, 127.4529954533116),
+        coordinate: {x:60, y:123}
       },
       {
         title: '부산',
-        latlng: new kakao.maps.LatLng(35.18265974967644, 129.07386888227154)
+        latlng: new kakao.maps.LatLng(35.18265974967644, 129.07386888227154),
+        coordinate: {x:81, y:75}
       },
       {
         title: '인천',
-        latlng: new kakao.maps.LatLng(37.458954911432535, 126.70331372219611)
+        latlng: new kakao.maps.LatLng(37.458954911432535, 126.70331372219611),
+        coordinate: {x:55, y:124}
       },
       {
         title: '대구',
-        latlng: new kakao.maps.LatLng(35.87771794342193, 128.59659836935032)
+        latlng: new kakao.maps.LatLng(35.87771794342193, 128.59659836935032),
+        coordinate: {x:90, y:91}
       },
       {
         title: '울산',
-        latlng: new kakao.maps.LatLng(35.54950363033224, 129.3409183292431)
+        latlng: new kakao.maps.LatLng(35.54950363033224, 129.3409183292431),
+        coordinate: {x:92, y:84}
       },
       {
         title: '광주',
-        latlng: new kakao.maps.LatLng(35.170646287285415, 126.84323524410567)
+        latlng: new kakao.maps.LatLng(35.170646287285415, 126.84323524410567),
+        coordinate: {x:58, y:75}
       },
       {
         title: '세종',
-        latlng: new kakao.maps.LatLng(36.48552550566817, 127.28487449390961)
+        latlng: new kakao.maps.LatLng(36.48552550566817, 127.28487449390961),
+        coordinate: {x:66, y:103}
       },
       {
         title: '대전',
-        latlng: new kakao.maps.LatLng(36.35317462132832, 127.38349978859107)
+        latlng: new kakao.maps.LatLng(36.35317462132832, 127.38349978859107),
+        coordinate: {x:68, y:101}
       },
       {
         title: '강원도',
-        latlng: new kakao.maps.LatLng(37.77394315040505, 128.2711341178054)
+        latlng: new kakao.maps.LatLng(37.77394315040505, 128.2711341178054),
+        coordinate: {x:84, y:132}
       },
       {
         title: '제주도',
-        latlng: new kakao.maps.LatLng(33.39031426313345, 126.54865624181927)
+        latlng: new kakao.maps.LatLng(33.39031426313345, 126.54865624181927),
+        coordinate: {x:46, y:35}
       }
     ];
 
@@ -77,9 +94,17 @@ function App() {
       var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
         position: positions[i].latlng, // 마커를 표시할 위치
+        clickable: true,
         title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        coordinate: positions[i].coordinate,
         image: markerImage // 마커 이미지 
       });
+      // 마커 클릭 이벤트 리스너를 추가합니다.
+      kakao.maps.event.addListener(marker, 'click', (function (marker, i) {
+        return function () {
+          handleMarkerClick(positions[i]);
+        }
+      })(marker, i));
     }
   }, [])
 
