@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function Weather() {
+function Weather(props) {
   const current = new Date();
   const date = `${current.getFullYear()}0${
     current.getMonth() + 1
@@ -44,9 +44,11 @@ function Weather() {
 
     fetchData();
   }, []);
-
+  //prop 연결 성공 : value1,2
   return (
     <div>
+      Value 1: {props.values.value1}
+      Value 2: {props.values.value2}
       <li>
         기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
         {current.getDate()}일
