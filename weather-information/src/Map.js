@@ -15,7 +15,7 @@ function Map(props) {
     const handleMarkerClick = (position) => {
       const { coordinate } = position;
       console.log('Clicked Coordinate:', coordinate);
-      props.setValues({ value1: position.x, value2: position.y })
+      props.setValues({ value1: position.coordinate.x, value2: position.coordinate.y })
     };
 
     // 마커를 표시할 위치와 title 객체 배열입니다 
