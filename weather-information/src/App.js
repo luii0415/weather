@@ -11,7 +11,7 @@ function App() {
       <div className="middle">
         {" "}
         middle section
-        {/* <Map setValues={setValues} /> */}
+        <Map setValues={setValues} />
         <Weather values={values} />
       </div>
       <div className="bottom">bottom section</div>
