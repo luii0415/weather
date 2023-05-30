@@ -6,7 +6,11 @@ function Weather(props) {
     current.getMonth() + 1
   }${current.getDate()}`;
   const [data, setData] = React.useState(null);
+  //var { val_1, val_2 } = props; //수정해야할 부분
+  //const val_x = `${val_1}`;
+  //const val_y = `${val_2}`;
 
+  //console.log(typeof val_x);
   useEffect(() => {
     const fetchData = async () => {
       const url =
@@ -14,7 +18,7 @@ function Weather(props) {
       const serviceKey =
         "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
       const baseDate = date;
-      const baseTime = "0500";
+      const baseTime = "0800";
       const nx = "64";
       const ny = "122";
 
@@ -45,6 +49,7 @@ function Weather(props) {
     fetchData();
   }, []);
   //prop 연결 성공 : value1,2
+
   return (
     <div>
       Value 1: {props.values.value1}
@@ -53,7 +58,7 @@ function Weather(props) {
         기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
         {current.getDate()}일
       </li>
-      <li>기준 시간 : 오전 6시</li>
+      <li>기준 시간 : 오전 8시</li>
       <li>기준 지역(기본 지역) : 용인시 처인구 모현읍</li>
       {data && data.response && data.response.body && (
         <div>

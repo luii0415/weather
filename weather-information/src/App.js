@@ -4,7 +4,7 @@ import Weather from "./Weather";
 import { Map } from "./Map";
 
 function App() {
-  const [values, setValues] = useState({ value1: 0, value2: 0 });
+  const [values, setValues] = useState({ value1: 64, value2: 122 }); // 초기값 : 모현읍
   return (
     <div className="App">
       <div className="top"> top section</div>
