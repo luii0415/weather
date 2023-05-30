@@ -16,7 +16,7 @@
   color: rgb(0, 0, 0);
 }
 
-.staticMap {
+.map {
   text-align: center;
   min-height: 100vh;
   display: flex;

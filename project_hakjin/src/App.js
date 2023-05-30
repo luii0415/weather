@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 const { kakao } = window;
 
-function App() {
+function App(props) {
 
   useEffect(() => {
     const mapContainer = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
@@ -16,6 +16,7 @@ function App() {
     const handleMarkerClick = (position) => {
       const { coordinate } = position;
       console.log('Clicked Coordinate:', coordinate);
+      props.setValues({ value1: position.x, value2: position.y })
       // 여기서 필요한 로직을 구현하면 됩니다.
       // 마커를 클릭했을 때 실행될 동작을 정의할 수 있습니다.
     };
