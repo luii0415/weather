@@ -6,54 +6,55 @@ function Weather(props) {
     current.getMonth() + 1
   }${current.getDate()}`;
   const [data, setData] = React.useState(null);
-  //var { val_1, val_2 } = props; //수정해야할 부분
-  //const val_x = `${val_1}`;
-  //const val_y = `${val_2}`;
+  var { value1, value2 } = props.values;
+  const val_x = `${value1}`;
+  const val_y = `${value2}`;
 
-  //console.log(typeof val_x);
-  useEffect(() => {
-    const fetchData = async () => {
-      const url =
-        "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
-      const serviceKey =
-        "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
-      const baseDate = date;
-      const baseTime = "0800";
-      const nx = "64";
-      const ny = "122";
+  console.log(typeof val_x);
 
-      const queryParams =
-        `?serviceKey=${encodeURIComponent(serviceKey)}` +
-        `&pageNo=${encodeURIComponent("1")}` +
-        `&numOfRows=${encodeURIComponent("11")}` +
-        `&dataType=${encodeURIComponent("JSON")}` +
-        `&base_date=${encodeURIComponent(baseDate)}` +
-        `&base_time=${encodeURIComponent(baseTime)}` +
-        `&nx=${encodeURIComponent(nx)}` +
-        `&ny=${encodeURIComponent(ny)}`;
+  const fetchData = async () => {
+    const url =
+      "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
+    const serviceKey =
+      "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
+    const baseDate = date;
+    const baseTime = "0800";
+    const nx = val_x;
+    const ny = val_y;
 
-      try {
-        const response = await fetch(url + queryParams);
-        if (response.ok) {
-          const jsonData = await response.json();
-          setData(jsonData);
-          console.log(jsonData); // 출력
-        } else {
-          console.error("API 호출 실패");
-        }
-      } catch (error) {
-        console.error(error);
+    const queryParams =
+      `?serviceKey=${encodeURIComponent(serviceKey)}` +
+      `&pageNo=${encodeURIComponent("1")}` +
+      `&numOfRows=${encodeURIComponent("11")}` +
+      `&dataType=${encodeURIComponent("JSON")}` +
+      `&base_date=${encodeURIComponent(baseDate)}` +
+      `&base_time=${encodeURIComponent(baseTime)}` +
+      `&nx=${encodeURIComponent(nx)}` +
+      `&ny=${encodeURIComponent(ny)}`;
+
+    try {
+      const response = await fetch(url + queryParams);
+      if (response.ok) {
+        const jsonData = await response.json();
+        setData(jsonData);
+        console.log(jsonData); // 출력
+      } else {
+        console.error("API 호출 실패");
       }
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
+  React.useEffect(() => {
     fetchData();
-  }, []);
+  }, [props.values]);
   //prop 연결 성공 : value1,2
 
   return (
     <div>
-      Value 1: {props.values.value1}
-      Value 2: {props.values.value2}
+      Value 1: {val_x}
+      Value 2: {val_y}
       <li>
         기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
         {current.getDate()}일
