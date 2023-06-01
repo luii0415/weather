@@ -2,22 +2,26 @@ import React, { useEffect } from "react";
 
 function Weather(props) {
   const current = new Date();
-  const date = `${current.getFullYear()}0${
-    current.getMonth() + 1
-  }${current.getDate()}`;
+  const year = current.getFullYear();
+  const month = (current.getMonth() + 1).toString().padStart(2, "0"); //padStart()메소드 사용 : 월이 2자리가 아니면 앞에 0을 추가
+  const date = current.getDate().toString().padStart(2, "0"); //padStart()메소드 사용 : 일이 2자리가 아니면 앞에 0을 추가
+  const formattedDate = `${year}${month}${date}`; //api에 전달되는 날짜
+  //const date = `${current.getFullYear()}0${
+  //  current.getMonth() + 1
+  //}${current.getDate()}`;
   const [data, setData] = React.useState(null);
   var { value1, value2 } = props.values;
   const val_x = `${value1}`;
   const val_y = `${value2}`;
 
-  console.log(typeof val_x);
+  console.log(formattedDate);
 
   const fetchData = async () => {
     const url =
       "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst";
     const serviceKey =
       "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
-    const baseDate = date;
+    const baseDate = formattedDate;
     const baseTime = "0800";
     const nx = val_x;
     const ny = val_y;
@@ -52,7 +56,7 @@ function Weather(props) {
   //prop 연결 성공 : value1,2
 
   return (
-    <div>
+    <div className="Weather">
       Value 1: {val_x}
       Value 2: {val_y}
       <li>
