@@ -14,8 +14,8 @@ function Map(props) {
     const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성 및 객체 리턴
     const handleMarkerClick = (position) => {
       const { coordinate } = position;
-      console.log('Clicked Coordinate:', coordinate);
-      props.setValues({ value1: position.coordinate.x, value2: position.coordinate.y })
+      console.log('Clicked Coordinate:', coordinate, position.title);
+      props.setValues({ value1: position.coordinate.x, value2: position.coordinate.y, value3: position.title })
     };
 
     // 마커를 표시할 위치와 title 객체 배열입니다 
