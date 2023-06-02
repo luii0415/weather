@@ -7,9 +7,9 @@ function Map(props) {
   useEffect(() => {
     const mapContainer = document.getElementById('map'); // 지도를 담을 영역의 DOM 레퍼런스
     const mapOption = { // 지도를 생성할 때 필요한 옵션
-      center: new kakao.maps.LatLng(35.95, 128.25), // 지도의 중심좌표
+      center: new kakao.maps.LatLng(35.95, 128.05), // 지도의 중심좌표
       draggable: false, // 지도를 생성할때 지도 이동 및 확대/축소를 막으려면 draggable: false 옵션을 추가하세요
-      level: 14 // 지도의 레벨(확대, 축소 정도)
+      level: 13 // 지도의 레벨(확대, 축소 정도)
     };
     const map = new kakao.maps.Map(mapContainer, mapOption); // 지도 생성 및 객체 리턴
     const handleMarkerClick = (position) => {
@@ -108,12 +108,12 @@ function Map(props) {
 
   return (
     <div className="Map">
-      <header className="App-header">
+      <header className="MapHeader">
         <img src='img/CodeBreakers_logo.png' alt="logo" />
         <p>날씨 정보 제공 웹사이트</p>
         <div id='map' style={{
-          width: '400px',
-          height: '450px'
+          width: '700px',
+          height: '700px'
         }}></div>
       </header>
     </div>
