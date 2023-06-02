@@ -5,7 +5,7 @@
   @media (prefers-reduced-motion: no-preference) {
   }
   
-  .App-header {
+  .MapHeader {
     background-color: #fcfcfc;
     min-height: 100vh;
     display: flex;
@@ -16,7 +16,7 @@
     color: rgb(0, 0, 0);
   }
   
-  .staticMap {
+  .MapContainer {
     text-align: center;
     min-height: 100vh;
     display: flex;
