@@ -4,7 +4,11 @@ import Weather from "./Weather";
 import { Map } from "./Map";
 
 function App() {
-  const [values, setValues] = useState({ value1: 64, value2: 122 }); // 초기값 : 모현읍
+  const [values, setValues] = useState({
+    value1: 64,
+    value2: 122,
+    value3: "경기도 용인시 처인구 모현읍",
+  }); // 지역 초기값 : 모현읍
   return (
     <div className="App">
       <div className="top"> top section</div>

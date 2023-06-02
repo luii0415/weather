@@ -6,14 +6,12 @@ function Weather(props) {
   const month = (current.getMonth() + 1).toString().padStart(2, "0"); //padStart()메소드 사용 : 월이 2자리가 아니면 앞에 0을 추가
   const date = current.getDate().toString().padStart(2, "0"); //padStart()메소드 사용 : 일이 2자리가 아니면 앞에 0을 추가
   const formattedDate = `${year}${month}${date}`; //api에 전달되는 날짜
-  //const date = `${current.getFullYear()}0${
-  //  current.getMonth() + 1
-  //}${current.getDate()}`;
+
   const [data, setData] = React.useState(null);
-  var { value1, value2 } = props.values;
+  var { value1, value2, value3 } = props.values;
   const val_x = `${value1}`;
   const val_y = `${value2}`;
-
+  const val_locate = `${value3}`;
   console.log(formattedDate);
 
   const fetchData = async () => {
@@ -59,12 +57,13 @@ function Weather(props) {
     <div className="Weather">
       Value 1: {val_x}
       Value 2: {val_y}
+      지역 : {val_locate}
       <li>
         기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
         {current.getDate()}일
       </li>
       <li>기준 시간 : 오전 8시</li>
-      <li>기준 지역(기본 지역) : 용인시 처인구 모현읍</li>
+      <li>기준 지역 : {val_locate}</li>
       {data && data.response && data.response.body && (
         <div>
           <h3>데이터:</h3>
