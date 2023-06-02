@@ -5,4 +5,4 @@ openSW project (project made with react)
 1. 9~10week : GUI 구상
 2. 11~13week : GUI 제작 및 개발
 3. 14week : 디버깅 및 완성
-4. 15week : 프로젝트 발표
+4. 15week : 프로젝트 발표 (6월 14일)
