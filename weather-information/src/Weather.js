@@ -20,7 +20,7 @@ function Weather(props) {
     const serviceKey =
       "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
     const baseDate = formattedDate;
-    const baseTime = "0800";
+    const baseTime = "1100";
     const nx = val_x;
     const ny = val_y;
 
@@ -62,7 +62,7 @@ function Weather(props) {
         기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
         {current.getDate()}일
       </li>
-      <li>기준 시간 : 오전 8시</li>
+      <li>기준 시간 : 오전 11시</li>
       <li>기준 지역 : {val_locate}</li>
       {data && data.response && data.response.body && (
         <div>
