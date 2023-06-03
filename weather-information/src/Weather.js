@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import "./Weather.css";
 function Weather(props) {
   const current = new Date();
   const year = current.getFullYear();
