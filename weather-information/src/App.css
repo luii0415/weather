@@ -1,8 +1,17 @@
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
+
+  .Weather {
+    font-family: "Noto Serif KR", serif;
+    font-size: 20px;
+  }
+
   .top {
     align-items: flex-start ;
   }
   
   .middle {
+    font-family: "Noto Serif KR", serif;
+    font-size: 20px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -32,4 +41,5 @@
   .App-link {
     color: #61dafb;
   }
+  
   
