@@ -109,8 +109,6 @@ function Map(props) {
   return (
     <div className="Map">
       <header className="MapHeader">
-        <img src='img/CodeBreakers_logo.png' alt="logo" />
-        <p>날씨 정보 제공 웹사이트</p>
         <div id='map' style={{
           width: '700px',
           height: '700px'
