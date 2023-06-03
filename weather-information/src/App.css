@@ -9,15 +9,20 @@
     align-items: flex-start ;
   }
   
-  .middle {
+  .web-title {
+    text-align: center;
     font-family: "Noto Serif KR", serif;
-    font-size: 20px;
+    font-size: 50px;
+  }
+  
+  .middle {
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
   }
+  
 
   .MapHeader {
     background-color: #fcfcfc;

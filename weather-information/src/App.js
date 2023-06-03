@@ -14,9 +14,9 @@ function App() {
       <div className="top"> 
         <img src='img/CodeBreakers_logo5.png' alt="logo" />
       </div>
+      <div className="web-title">날씨 코드 break!</div>
       <div className="middle">
         {" "}
-        날씨 코드 break!
         <Map setValues={setValues} />
         <Weather values={values} />
       </div>
