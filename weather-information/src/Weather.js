@@ -82,28 +82,28 @@ function Weather(props) {
               ) {
                 return (
                   <li key={index}>
-                    카테고리 :{" "}
+                    {" "} 
                     {(() => {
                       switch (item.category) {
                         case "TMP":
-                          return "온도";
+                          return "온도 ";
                         case "WSD":
-                          return "풍속";
+                          return "풍속 ";
                         case "POP":
-                          return "강수확률";
+                          return "강수확률 ";
                         case "PCP":
-                          return "1시간 강수량";
+                          return "1시간 강수량 ";
                         case "REH":
-                          return "습도";
+                          return "습도 ";
                         case "SKY":
-                          return "하늘상태";
+                          return "하늘상태 ";
                         case "PTY":
-                          return "강수형태";
+                          return "강수형태 ";
                         default:
                           return item.category;
                       }
                     })()}
-                    , 값:{" "}
+                    :{" "}
                     {(() => {
                       if (item.category === "SKY") {
                         switch (item.fcstValue) {
