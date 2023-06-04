@@ -4,3 +4,7 @@
   font-family: "Noto Serif KR", serif;
   font-size: 20px;
 }
+
+.Weather li {
+  list-style-type: none;
+}

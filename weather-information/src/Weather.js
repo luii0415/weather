@@ -55,9 +55,6 @@ function Weather(props) {
 
   return (
     <div className="Weather">
-      Value 1: {val_x}
-      Value 2: {val_y}
-      지역 : {val_locate}
       <li>
         기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
         {current.getDate()}일
@@ -66,7 +63,6 @@ function Weather(props) {
       <li>기준 지역 : {val_locate}</li>
       {data && data.response && data.response.body && (
         <div>
-          <h3>데이터:</h3>
           <ul>
             {data.response.body.items.item.map((item, index) => {
               const popValue = data.response.body.items.item.find(
