@@ -11,13 +11,14 @@ function App() {
   }); // 지역 초기값 : 모현읍
   return (
     <div className="App">
-      <div className="top"> 
-        <img src='img/CodeBreakers_logo5.png' alt="logo" />
+      <div className="top">
+        <img src="img/CodeBreakers_logo5.png" alt="logo" />
       </div>
       <div className="web-title">날씨 코드 break!</div>
       <div className="middle">
         {" "}
         <Map setValues={setValues} />
+        <div className="space"></div>
         <Weather values={values} />
       </div>
       <div className="bottom">bottom section</div>

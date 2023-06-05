@@ -1,50 +1,56 @@
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
 
-  .Weather {
-    font-family: "Noto Serif KR", serif;
-    font-size: 20px;
-  }
+.Weather {
+  font-family: "Noto Serif KR", serif;
+  font-size: 20px;
+}
 
-  .top {
-    align-items: flex-start ;
-  }
-  
-  .web-title {
-    text-align: center;
-    font-family: "Noto Serif KR", serif;
-    font-size: 50px;
-  }
-  
-  .middle {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  
+.top {
+  align-items: flex-start;
+}
 
-  .MapHeader {
-    background-color: #fcfcfc;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: rgb(0, 0, 0);
-  }
-  
-  .MapContainer {
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .App-link {
-    color: #61dafb;
-  }
-  
-  
+.web-title {
+  text-align: center;
+  font-family: "Noto Serif KR", serif;
+  font-size: 50px;
+}
+
+.middle {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.MapHeader {
+  background-color: #fcfcfc;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+
+.MapContainer {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.space {
+  width: 150px;
+}
+
+.bottom {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
