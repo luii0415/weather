@@ -55,111 +55,116 @@ function Weather(props) {
 
   return (
     <div className="Weather">
-      <li>
-        기준 날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
-        {current.getDate()}일
-      </li>
-      <li>기준 시간 : 오전 11시</li>
-      <li>기준 지역 : {val_locate}</li>
-      {data && data.response && data.response.body && (
-        <div>
-          <ul>
-            {data.response.body.items.item.map((item, index) => {
-              const popValue = data.response.body.items.item.find(
-                (i) => i.category === "POP"
-              )?.fcstValue;
-              if (
-                (item.category === "PTY" || item.category === "PCP") &&
-                popValue === "0"
-              ) {
-                return null;
-              }
-              if (
-                item.category !== "WAV" &&
-                item.category !== "VVV" &&
-                item.category !== "UUU" &&
-                item.category !== "VEC"
-              ) {
-                return (
-                  <li key={index}>
-                    {" "} 
-                    {(() => {
-                      switch (item.category) {
-                        case "TMP":
-                          return "온도 ";
-                        case "WSD":
-                          return "풍속 ";
-                        case "POP":
-                          return "강수확률 ";
-                        case "PCP":
-                          return "1시간 강수량 ";
-                        case "REH":
-                          return "습도 ";
-                        case "SKY":
-                          return "하늘상태 ";
-                        case "PTY":
-                          return "강수형태 ";
-                        default:
-                          return item.category;
-                      }
-                    })()}
-                    :{" "}
-                    {(() => {
-                      if (item.category === "SKY") {
-                        switch (item.fcstValue) {
-                          case "1":
-                            return "맑음";
-                          case "3":
-                            return "구름많음";
-                          case "4":
-                            return "흐림";
-                          default:
-                            return item.fcstValue;
-                        }
-                      } else if (item.category === "PTY") {
-                        switch (item.fcstValue) {
-                          case "0":
-                            return "맑음";
-                          case "1":
-                            return "비";
-                          case "2":
-                            return "비 나 눈";
-                          case "3":
-                            return "소나기";
-                          default:
-                            return item.fcstValue;
-                        }
-                      } else {
-                        return item.fcstValue;
-                      }
-                    })()}
-                    {(() => {
-                      if (!isNaN(item.fcstValue)) {
+      <div className="Weather_header">
+        <li>
+          날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
+          {current.getDate()}일
+        </li>
+        <li>기준 시간 : 오전 11시</li>
+        <li>지역 : {val_locate}</li>
+      </div>
+      <p className="Weather_space"></p>
+      <div className="Weather_data">
+        {data && data.response && data.response.body && (
+          <div>
+            <ul>
+              {data.response.body.items.item.map((item, index) => {
+                const popValue = data.response.body.items.item.find(
+                  (i) => i.category === "POP"
+                )?.fcstValue;
+                if (
+                  (item.category === "PTY" || item.category === "PCP") &&
+                  popValue === "0"
+                ) {
+                  return null;
+                }
+                if (
+                  item.category !== "WAV" &&
+                  item.category !== "VVV" &&
+                  item.category !== "UUU" &&
+                  item.category !== "VEC"
+                ) {
+                  return (
+                    <li key={index}>
+                      {" "}
+                      {(() => {
                         switch (item.category) {
                           case "TMP":
-                            return "℃";
-                          case "PCP":
-                            return "mm";
-                          case "POP":
-                            return "%";
-                          case "REH":
-                            return "%";
+                            return "온도 ";
                           case "WSD":
-                            return "m/s";
+                            return "풍속 ";
+                          case "POP":
+                            return "강수확률 ";
+                          case "PCP":
+                            return "1시간 강수량 ";
+                          case "REH":
+                            return "습도 ";
+                          case "SKY":
+                            return "하늘상태 ";
+                          case "PTY":
+                            return "강수형태 ";
                           default:
-                            return "";
+                            return item.category;
                         }
-                      } else {
-                        return "";
-                      }
-                    })()}
-                  </li>
-                );
-              }
-            })}
-          </ul>
-        </div>
-      )}
+                      })()}
+                      :{" "}
+                      {(() => {
+                        if (item.category === "SKY") {
+                          switch (item.fcstValue) {
+                            case "1":
+                              return "맑음";
+                            case "3":
+                              return "구름많음";
+                            case "4":
+                              return "흐림";
+                            default:
+                              return item.fcstValue;
+                          }
+                        } else if (item.category === "PTY") {
+                          switch (item.fcstValue) {
+                            case "0":
+                              return "맑음";
+                            case "1":
+                              return "비";
+                            case "2":
+                              return "비 나 눈";
+                            case "3":
+                              return "소나기";
+                            default:
+                              return item.fcstValue;
+                          }
+                        } else {
+                          return item.fcstValue;
+                        }
+                      })()}
+                      {(() => {
+                        if (!isNaN(item.fcstValue)) {
+                          switch (item.category) {
+                            case "TMP":
+                              return "℃";
+                            case "PCP":
+                              return "mm";
+                            case "POP":
+                              return "%";
+                            case "REH":
+                              return "%";
+                            case "WSD":
+                              return "m/s";
+                            default:
+                              return "";
+                          }
+                        } else {
+                          return "";
+                        }
+                      })()}
+                    </li>
+                  );
+                }
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

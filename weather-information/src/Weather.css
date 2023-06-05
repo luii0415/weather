@@ -3,8 +3,17 @@
 .Weather {
   font-family: "Noto Serif KR", serif;
   font-size: 20px;
+  padding: 20px;
 }
 
 .Weather li {
   list-style-type: none;
+}
+
+.Weather_header {
+  font-size: 25px;
+}
+
+.Weather_data {
+  text-align: left;
 }
