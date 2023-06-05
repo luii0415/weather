@@ -1,7 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
 
 .Weather {
-  font-family: "Noto Serif KR", serif;
+  font-family: 'Jua', sans-serif;
   font-size: 20px;
   min-width: 150px;
   border-style: double;
@@ -14,8 +15,8 @@
 }
 
 .web-title {
+  font-family: 'Jua', sans-serif;
   text-align: center;
-  font-family: "Noto Serif KR", serif;
   font-size: 50px;
 }
 
