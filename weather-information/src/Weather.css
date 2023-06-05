@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 .Weather {
-  font-family: "Noto Serif KR", serif;
+  font-family: 'Jua', sans-serif;
   font-size: 20px;
   padding: 20px;
 }
