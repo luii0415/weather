@@ -4,6 +4,9 @@
   font-family: "Noto Serif KR", serif;
   font-size: 20px;
   padding: 20px;
+  width: 400px;
+  height: 450px;
+  overflow: hidden;
 }
 
 .Weather li {
@@ -12,6 +15,11 @@
 
 .Weather_header {
   font-size: 25px;
+  border-style: solid;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  padding-bottom: 20px;
 }
 
 .Weather_data {
