@@ -96,7 +96,7 @@ function Weather(props) {
                           case "POP":
                             return "강수확률 ";
                           case "PCP":
-                            return "1시간 강수량 ";
+                            return "강수량 ";
                           case "REH":
                             return "습도 ";
                           case "SKY":
