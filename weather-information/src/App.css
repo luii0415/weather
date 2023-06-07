@@ -1,8 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 .Weather {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-size: 20px;
   min-width: 150px;
   border-style: double;
@@ -15,9 +14,10 @@
 }
 
 .web-title {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   text-align: center;
   font-size: 50px;
+  text-shadow: 3px 3px #cf90ee;
 }
 
 .middle {
