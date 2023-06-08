@@ -59,3 +59,15 @@
   padding-top: 30px;
   padding-bottom: 30px;
 }
+.inline {
+  display: inline-block;
+}
+.p_top {
+  margin: 0;
+  padding-left: 15px;
+}
+
+.p_bottom {
+  margin: 0;
+  padding-left: 15px;
+}
