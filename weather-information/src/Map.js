@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./App.css";
+import "./Map.css";
 
 const { kakao } = window;
 
@@ -107,13 +107,11 @@ function Map(props) {
   }, [])
 
   return (
-    <div className="Map">
-      <header className="MapHeader">
-        <div id='map' style={{
-          width: '700px',
-          height: '700px'
-        }}></div>
-      </header>
+    <div className="MapContainer">
+      <div id='map' style={{
+        width: '700px',
+        height: '700px'
+      }}></div>
     </div>
   );
 }
