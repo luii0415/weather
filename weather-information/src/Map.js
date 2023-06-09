@@ -109,8 +109,8 @@ function Map(props) {
   return (
     <div className="MapContainer">
       <div id='map' style={{
-        width: '700px',
-        height: '700px'
+        width: '680px',
+        height: '620px'
       }}></div>
     </div>
   );
