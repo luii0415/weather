@@ -2,10 +2,10 @@
 
 .Weather {
   font-family: "Jua", sans-serif;
-  font-size: 20px;
+  font-size: 30px;
   padding: 20px;
-  width: 380px;
-  height: 450px;
+  width: 430px;
+  height: 550px;
   overflow: hidden;
   border-radius: 13px;
 }
@@ -15,11 +15,12 @@
 }
 
 .Weather_header {
-  font-size: 25px;
+  font-size: 28px;
   border-style: solid;
   border-top: 0;
   border-left: 0;
   border-bottom-right-radius: 10px;
+  padding-top: 20px;
   padding-bottom: 20px;
 
   box-shadow: 5px 5px 3px rgb(218, 161, 230);
