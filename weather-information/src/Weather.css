@@ -5,9 +5,13 @@
   font-size: 30px;
   padding: 20px;
   width: 430px;
+  min-width: 350px;
   height: 550px;
+  min-height: 450px;
   overflow: hidden;
   border-radius: 13px;
+  border-style: double;
+  border-width: thick;
 }
 
 .Weather li {

@@ -1,14 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-.Weather {
-  font-family: "Jua", sans-serif;
-  font-size: 20px;
-  min-width: 150px;
-  border-style: double;
-  border-width: thick;
-  text-align: center;
-}
-
 .top {
   align-items: flex-start;
 }
@@ -36,6 +27,7 @@
 
 .space {
   width: 150px;
+  min-width: 100px;
 }
 
 .bottom {
