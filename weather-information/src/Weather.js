@@ -68,6 +68,7 @@ function Weather(props) {
       </div>
       <p className="Weather_space"></p>
       <div className="Weather_data">
+        <div className="top_right">강수량 : 기준 시간 기준 1시간 강수량</div>
         {/* api 데이터 출력부 */}
         {data && data.response && data.response.body && (
           <div>
@@ -138,6 +139,8 @@ function Weather(props) {
                             case "2":
                               return "비 나 눈";
                             case "3":
+                              return "눈";
+                            case "4":
                               return "소나기";
                             default:
                               return item.fcstValue;
