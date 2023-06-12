@@ -7,6 +7,30 @@ function Weather(props) {
   const date = current.getDate().toString().padStart(2, "0"); //padStart()메소드 사용 : 일이 2자리가 아니면 앞에 0을 추가
   const formattedDate = `${year}${month}${date}`; //api에 전달되는 날짜
 
+  const time = new Date(); // 시간을 최대한 가까운 시간으로 배치
+  const hours = time.getHours();
+  let timeValue = "1100";
+  let base_hour = "오전 11시";
+  if (0 < hours && hours < 11) {
+    timeValue = "0800";
+    base_hour = "오전 8시";
+  } else if (11 <= hours && hours < 14) {
+    timeValue = "1100";
+    base_hour = "오전 11시";
+  } else if (14 <= hours && hours < 17) {
+    timeValue = "1400";
+    base_hour = "오후 2시";
+  } else if (17 <= hours && hours < 20) {
+    timeValue = "1700";
+    base_hour = "오후 5시";
+  } else if (20 <= hours && hours <= 23) {
+    timeValue = "2000";
+    base_hour = "오후 8시";
+  } else {
+    timeValue = "1100";
+    base_hour = "오전 11시";
+  }
+
   const [data, setData] = React.useState(null); //api 데이터 저장
   var { value1, value2, value3 } = props.values; //Map에서 전달한 prop 저장
   const val_x = `${value1}`;
@@ -21,7 +45,7 @@ function Weather(props) {
     const serviceKey =
       "IEWoUlU0P1zQW3YrM7GJsaovDsQmJjd6u8gI1tS4Imz3SitbKQ7e0psu6c+mZHVzDPTINJEjwRk5XFNg6FvUcw==";
     const baseDate = formattedDate;
-    const baseTime = "1100";
+    const baseTime = timeValue;
     const nx = val_x;
     const ny = val_y;
 
@@ -63,7 +87,7 @@ function Weather(props) {
           날짜 : {current.getFullYear()}년 {current.getMonth() + 1}월{" "}
           {current.getDate()}일
         </li>
-        <li>기준 시간 : 오전 11시</li>
+        <li>기준 시간 : {base_hour}</li>
         <li>지역 : {val_locate}</li>
       </div>
       <p className="Weather_space"></p>
