@@ -11,6 +11,9 @@ function Weather(props) {
   const hours = time.getHours();
   let timeValue = "1100";
   let base_hour = "오전 11시";
+  // JS에서는 0 < hours <= 11라는 표현이 올바르게 작동하지 않는다.
+  // JS에서는 0< hours 를 평가한 다음, 결과를 true, false로 반환한다.
+  // 이후 이 bool 값이 <= 11 평가로 사용된다. 따라서 0 < hours <= 11는 항상 true가 된다.
   if (0 < hours && hours < 11) {
     timeValue = "0800";
     base_hour = "오전 8시";
