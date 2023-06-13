@@ -4,6 +4,7 @@ import Weather from "./Weather";
 import { Map } from "./Map";
 
 function App() {
+  // value1 : x좌표, value2 : y좌표, value3 : 지역명
   const [values, setValues] = useState({
     value1: 64,
     value2: 122,
