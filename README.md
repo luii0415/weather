@@ -6,3 +6,5 @@ openSW project (project made with react)
 2. 11~13week : GUI 제작 및 개발
 3. 14week : 디버깅 및 완성
 4. 15week : 프로젝트 발표 (6월 14일)
+
+팀 프로젝트의 최종 작업물은 weather-information 폴더에서 작업했습니다. 
