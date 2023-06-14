@@ -26,7 +26,7 @@ function App() {
         <img className="inline" src="img/img_opentype01.png" />
         <div className="inline">
           <p className="p_top">
-            본 저작물은 '기상청'에서 '2021'년작성하여 공공누리 제 1유형으로
+            본 저작물은 '기상청'에서 '2021'년 작성하여 공공누리 제 1유형으로
             개방한 '기상청_단기예보 ((구)_동네예보) 조회서비스'를 이용하였으며,
           </p>
           <p className="p_bottom">
